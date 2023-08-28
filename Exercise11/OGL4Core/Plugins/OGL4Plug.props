@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup>
+    <TargetName>$(ProjectName)$(BitsD)</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(OGL4CoreDirectory)OGL4CoreAPI/;$(OGL4CoreDirectory)OGL4Core/;$(OGL4CoreDirectory)gl3w/include/;$(OGL4CoreDirectory)glm;$(OGL4CoreDirectory)datraw;$(OGL4CoreDirectory)libpng;$(OGL4CoreDirectory)freetype/include/;$(OGL4CoreDirectory);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(OGL4CoreDirectory)$(PlatformName)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OGL4CoreAPI$(BitsD).lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>AntTweakBar.lib;AntTweakBarStatic.lib;AntTweakBarStatic64.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>move "$(TargetPath)" "$(SolutionDir)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>move dll to solution root</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
